@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'custom.css' %}?version=50">
+</head>
+<body class="bodygo" style="margin-top: 100px;background-color: white;">
+    <img src="{% static 'back.jpg' %}" id="backimg">
+    <div id="loginpg" style="padding-bottom: 200px;">
+        <h1 class="word" style="margin-left: 310px;margin-bottom: 20px;">Plese Login</h1>
+        <p id="word2" style="margin-left: 310px;margin-bottom: 10px;">You must be logged in</p>
+        <form id="logform" method="post" style="margin-left: 20px;">
+            {% csrf_token %}
+            <table id="logtable">
+                    <tbody>
+                        <tr><th></th><td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_password" style="margin-bottom: 10px;"></td></tr>
+                        <tr><th></th><td><input type="password" name="password" autocomplete="current-password" required="" id="id_password" style="margin-bottom: 10px;"></td></tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <input type="submit" value="Login" id="submit1" style="margin-bottom: 30px;background-color: #DC052D;border-radius: 10px;padding-left: 5px;">
+                                <input type="hidden" name="next" value="{{ next }}" >
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <p id="notreg">
+                Not Registered Yet?
+                <a href="{% url 'register' %}" id="reghere" style="color: #DC052D;">Register Here</a>
+            </p>
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>

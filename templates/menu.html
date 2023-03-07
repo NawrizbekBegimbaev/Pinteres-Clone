@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}?version=52">
+    <script src="{% static 'base.js' %}"></script>
+</head>
+<body>
+    <div id="menu">
+        <div id="menu-bar" onclick="menuOnClick()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav class="nav" id="nav">
+          <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'create' %}">Добавить</a></li>
+                <ul>
+                    {% for i in category %}
+                         <li><a href="#">{{ i }}</a></li>
+                    {% endfor %}
+                </ul>
+                <li><a href="{% url 'logout'  %}">Выйти</a></li>
+                {% else %}
+                    <li><a href="{% url 'login1'  %}">Войти</a></li>
+            {% endif %}
+          </ul>
+        </nav> 
+      </div>
+      
+      <div class="menu-bg" id="menu-bg"></div>
+</body>
+</html>

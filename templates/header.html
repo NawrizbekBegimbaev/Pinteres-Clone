@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'custom.css' %}?version=52">
+  <title>Header</title>
+</head>
+<body>
+  <div class="search">
+    <nav class="nav__Profile"><!--Navigation Bar Starts Here-->
+      <a class="display-picture"><img src="#"alt=""></a>
+      <div class="card hidden">
+        <ul class="List__Profile1">
+          {% if user.is_authenticated %}
+            <li class="li__profile"><a class="link__profile" href="#"><i class="fa fa-pencil-square"></i> Edit Profile</li></a>
+            <li class="li__profile"><a class="link__profile" href="#"><i class="fa fa-user"></i> My Profile</li></a>
+            <li class="li__profile"><a class="link__profile" href="{% url 'logout'  %}"><i class="fa fa-sign-out"></i> Log out</li></a>
+            {% else %}
+              <li class="li__profile"><a class="link__profile" href="{% url 'login1'  %}"><i class="fa fa-sign-out"></i> Log in</li></a>
+          {% endif %}
+        </ul>
+      </div>
+    </nav><!--Navigation Bar Starts Here-->
+    <form action="{% url 'search' %}" method="GET" style="margin-top: 25px;"><input placeholder="Поиск по категориям и названиям" id="search-int" name="search" type="text" style="background-color: rgb(201, 201, 201);"></form>
+  </div> 
+
+  <script type="text/javascript">
+    let card = document.querySelector(".card"); //declearing profile card element
+    let displayPicture = document.querySelector(".display-picture"); //declearing profile picture
+
+    displayPicture.addEventListener("click", function() { //on click on profile picture toggle hidden class from css
+    card.classList.toggle("hidden")})    
+  </script>
+</body>
+</html>

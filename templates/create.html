@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}?version=50">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" style="margin-left: 500px;margin-top: 150px;">
+        {% csrf_token %}
+        <table>
+            <tbody>
+                <tr style="height: 20px;margin-bottom: 10px;width: 300px;">
+                    <td>
+                        <input type="text" name="title" maxlength="1024" required="" id="id_title" class="id_password" style="height: 30px;margin-bottom: 10px;width: 300px;" placeholder="Название">
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td>
+                        <select name="category" required="" id="id_category" class="id_password" style="height: 40px;margin-bottom: 10px;width: 300px;">
+                            <option value="" selected="">Категория</option>
+                            {% for i in category %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td>
+                    <input type="file" name="photo" accept="image/*" required="" id="id_photo" class="id_photo" style="height: 40px;margin-bottom: 10px;width: 300px;">
+                    </td>
+                </tr>
+        
+                <tr>
+                    <td>
+                        <select name="nameuser" required="" id="id_nameuser" class="id_password" style="height: 40px;margin-bottom: 10px;width: 300px;">
+                            <option value="" selected="" >Пользователь</option >
+                            {% for i in users %}
+                                <option value="{{ i.id }}">{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr style="height: 20px;margin-bottom: 10px;width: 300px;">
+                    <td><input type="submit" value="Add" id="submit1" style="margin-bottom: 30px;background-color: #DC052D;border-radius: 10px;padding-left: 5px;width: 100px;"></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="next" value="">
+    </form>
+</body>
+</html>

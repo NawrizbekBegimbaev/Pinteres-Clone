@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ photo.title }}</title>
+</head>
+<body style="display: inline-block;margin-top: 25px;margin-left: 100px;">
+    <img src="{{ photo.photo.url }}" style="width: 600px;height: 375px;border-radius: 20px;display: inline-block;margin-right: 250px;margin-top: -50px;">
+    <div style="display: inline-block;text-align: right;">
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 20px;color: rgb(146, 147, 148);">Название:</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;margin-bottom: 50px;">{{ photo.title }}</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 20px;color: rgb(146, 147, 148);">Категорие:</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;">{{ photo.category }}</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 20px;color: rgb(146, 147, 148);">Опубликован by:</p>
+        <p style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size: 30px;margin-bottom: 75px;">{{ photo.nameuser }}</p>
+        <a href="{{ photo.photo.url }}" download style="text-decoration: none;font-family: 'Courier New', Courier, monospace;color: black;margin-top: 50px;">
+        <butto style="border: double 2px black;padding-left: 30px;padding-right: 30px;padding-top: 10px;padding-bottom: 10px;border-color: chartreuse;">Download</button></a> 
+    </div>
+    <p style="font-size: 30px;text-align: center;margin-top: 50px;">Вам может понравиться</p>
+    <div class="container">
+        {% for i in photos %}
+          <div class="image">
+            <a href="{{i.id}}"><img src="{{i.photo.url}}" class="imgg"></a>
+          </div>
+        {% endfor %}
+      </div>
+</body>
+</html>
